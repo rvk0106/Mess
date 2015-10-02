@@ -10,6 +10,36 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
- *
- *= require_self
  */
+
+.logo{
+    margin-top: 5%;
+    margin-bottom: 2%;
+    margin-left: 40px;
+    width: 100px;
+}
+.top_page{
+
+    padding-top: 10%;
+    height: 500px;
+    background-image: url("this.jpg");
+}
+.page_two{
+    margin-top: 2%;
+    height: 250px;
+    background-color: rgb(252, 211, 7)
+}
+.login_button{
+padding: 0px !important;
+}
+.login_button_right{
+    float: right;
+}
+.login_heading{
+    text-align: center;
+    color: #ffffff;
+}
+.login_label{
+    color: #ffffff;
+
+}
