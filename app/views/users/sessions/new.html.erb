@@ -7,7 +7,6 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-
     </div>
     <div class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
@@ -23,14 +22,14 @@
 <div class="logo">
   <%= image_tag "mess.png" %>
 </div>
+
+
 <div data-scroll-index="0" class="top_page">
+  <div class="col-md-1"></div>
 
-
-
-<div class="col-md-1"></div>
-<div class="col-md-4 ptop">
-  <div class="col-md-12 login_heading"><h1>LOGIN</h1></div>
-  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+  <div class="col-md-4 ptop">
+    <div class="col-md-12 login_heading"><h1>LOGIN</h1></div>
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
       <div class="form-group">
         <%= f.email_field :email, autofocus: true, :placeholder => "Email", :class => "form-control"%>
       </div>
@@ -38,38 +37,33 @@
         <%= f.password_field :password, autofocus: true, :placeholder => "Email", :class => "form-control"%>
       </div>
       <% if devise_mapping.rememberable? -%>
-          <div class="field">
-            <%= f.check_box :remember_me %>
-            <%= f.label :remember_me , class: "login_label"%>
-          </div>
+        <div class="field">
+          <%= f.check_box :remember_me %>
+          <%= f.label :remember_me , class: "login_label"%>
+        </div>
       <% end -%>
-
-     <div>
-       <div class="col-md-4 login_button">
-         <div >
-           <%= link_to "Sign up !!" , "", :class => "btn btn-success btn-lg ", :onclick => "return openRegisterform()" %><br />
-
-         </div>
-       </div>
-     <div class="col-md-4"></div>
-       <div class="col-md-4 login_button">
+      <div class="col-md-12">
+        <div class="col-md-8"></div>
+        <div class="col-md-4 login_button">
           <div >
-            <%= f.submit "Log in", :class => "btn btn-primary btn-lg login_button_right" %>
-
+            <%= f.submit "Log in", :class => "btn btn-primary btn-lg pull-right" %>
           </div>
+        </div>
       </div>
-
-      <%#= render "users/shared/links" %>
-  <% end %>
+      <div class="col-md-12">&nbsp;</div>
+      <div class="col-md-12 login_button">
+        <div class="col-md-6">
+          <%= link_to "FIND A TUTOR" , "", :class => "btn btn-success btn-mg pull-left", :onclick => "return openRegisterform()" %>
+        </div>
+        <div class="col-md-6">
+          <%= link_to "FIND A JOB" , "", :class => "btn btn-success btn-mg pull-right", :onclick => "return openRegisterform()" %>
+        </div>
+      </div>
+    <%end%>
   </div>
-</div>
- <div class="col-md-2">
+  <div class="col-md-2"> 
   </div>
   <div class="col-md-4 bgregister">
     <%= render :partial => "/users/registrations/new" %>
   </div>
 </div>
-</div>
-<div data-scroll-index="1" class="page_two"> </div>
-<div data-scroll-index="2">...</div>
-   
