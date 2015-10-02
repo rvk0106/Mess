@@ -21,14 +21,14 @@
 </div>
 
 <div class="logo">
-  <%= image_tag "mess.jpg" %>
+  <%= image_tag "mess.png" %>
 </div>
 <div data-scroll-index="0" class="top_page">
 
 
 
 <div class="col-md-1"></div>
-<div class="col-md-4">
+<div class="col-md-4 ptop">
   <div class="col-md-12 login_heading"><h1>LOGIN</h1></div>
   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
       <div class="form-group">
@@ -47,7 +47,7 @@
      <div>
        <div class="col-md-4 login_button">
          <div >
-           <%= link_to "Sign up !!", new_registration_path(resource_name)  ,:class => "btn btn-success btn-lg ", remote: true%><br />
+           <%= link_to "Sign up !!" , "", :class => "btn btn-success btn-lg ", :onclick => "return openRegisterform()" %><br />
 
          </div>
        </div>
@@ -63,6 +63,11 @@
   <% end %>
   </div>
 </div>
+ <div class="col-md-2">
+  </div>
+  <div class="col-md-4 bgregister">
+    <%= render :partial => "/users/registrations/new" %>
+  </div>
 </div>
 </div>
 <div data-scroll-index="1" class="page_two"> </div>

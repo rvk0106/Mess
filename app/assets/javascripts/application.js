@@ -13,8 +13,15 @@
 //= require jquery
 //= require jquery_ujs
 //= require twitter/bootstrap
+//= require bootstrapValidator.min
 
 
 $(function(){
     $.scrollIt();
 });
+function openRegisterform()
+{
+	$('.bgregister').show();
+
+	return false;
+}
