@@ -19,9 +19,10 @@
 $(function(){
     $.scrollIt();
 });
-function openRegisterform()
+function openRegisterform(get_class)
 {
-	$('.bgregister').show();
+    $('.bgregister').hide();
+	$(get_class).show();
 
 	return false;
 }

@@ -53,17 +53,20 @@
       <div class="col-md-12">&nbsp;</div>
       <div class="col-md-12 login_button">
         <div class="col-md-6">
-          <%= link_to "FIND A TUTOR" , "", :class => "btn btn-success btn-mg pull-left", :onclick => "return openRegisterform()" %>
+          <%= link_to "FIND A TUTOR" , "", :class => "btn btn-success btn-mg pull-left", :onclick => "return openRegisterform('.student')" %>
         </div>
         <div class="col-md-6">
-          <%= link_to "FIND A JOB" , "", :class => "btn btn-success btn-mg pull-right", :onclick => "return openRegisterform()" %>
+          <%= link_to "FIND A JOB" , "", :class => "btn btn-success btn-mg pull-right", :onclick => "return openRegisterform('.faculty')" %>
         </div>
       </div>
     <%end%>
   </div>
   <div class="col-md-2"> 
   </div>
-  <div class="col-md-4 bgregister">
-    <%= render :partial => "/users/registrations/new" %>
+  <div class="col-md-4 bgregister student">
+    <%= render :partial => "/users/registrations/new", :locals => {:type => "student"} %>
+  </div>
+  <div class="col-md-4 bgregister faculty">
+    <%= render :partial => "/users/registrations/new", :locals => {:type => "faculty"} %>
   </div>
 </div>
