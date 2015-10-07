@@ -1,14 +1,24 @@
 Rails.application.routes.draw do
-  
 
+  resources :user_subjects
+  resources :subjects
+  resources :semisters
+  resources :courses
+  resources :universities
+  get '/get_university_courses/:id', to:"semisters#get_university_courses"
+  get '/get_course_semisters/:id', to:"subjects#get_course_semisters"
+  get 'get_semister_subject_checkbox/:id', to: "welcome#get_semister_subject_checkbox"
 
   devise_for :users, controllers: {sessions: "users/sessions", registrations: "users/registrations", passwords: "users/passwords", confirmations: "users/confirmations", unlocks: "users/unlocks"}, path_names: {sign_in: "login", sign_out: "logout", sign_up: "user/registration"}
 
   authenticated do
     devise_scope :user do
       root to: "welcome#index", :as => "authenticated"
+      put "/update_user_subjects/:id", to: "welcome#update_user_subjects", as: "update_user_subjects"
     end
   end
+
+
 
   unauthenticated do
     devise_scope :user do
