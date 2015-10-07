@@ -18,6 +18,43 @@
 
 $(function(){
     $.scrollIt();
+    $( "#semister_university" ).change(function() {
+        $.ajax({
+            url: "/get_university_courses/"+$(this).val()
+        }).done(function(data){
+            $("#semister_course_id").empty().append(data);
+        });
+    });
+    $( "#subject_university" ).change(function() {
+        $.ajax({
+            url: "/get_university_courses/"+$(this).val()
+        }).done(function(data){
+            $("#subject_course").empty().append(data);
+        });
+    });
+    $( "#subject_course" ).change(function() {
+        $.ajax({
+            url: "/get_course_semisters/"+$(this).val()
+        }).done(function(data){
+            $("#subject_semister_id").empty().append(data);
+        });
+    });
+    $( "#user_university" ).change(function() {
+        $.ajax({
+            url: "/get_university_courses/"+$(this).val()
+        }).done(function(data){
+            $("#user_course").empty().append(data);
+        });
+    });
+    $( "#user_course" ).change(function() {
+        $.ajax({
+            url: "/get_semister_subject_checkbox/"+$(this).val()
+        }).done(function(data){
+
+            $(".semister_subjects").html(data);
+           // $("#subject_semister_id").empty().append(data);
+        });
+    });
 });
 function openRegisterform(get_class)
 {

@@ -6,3 +6,23 @@
       <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
     </li>
 <% end %>
+
+<%= form_for(current_user, :url => update_user_subjects_path(current_user.id), html: { method: :put }) do |f| %>
+    <div class="field">
+      <%= f.label :university %><br>
+      <%= f.select :university, University.all.pluck(:university_name,:id), {prompt: "Select University"} %>
+    </div>
+    <div class="field">
+      <%= f.label :course %><br>
+      <%= f.select :course, "", {prompt: "Select Course"}  %>
+    </div>
+    <div class="field">
+      <%= f.label :select_category %><br>
+      <div class="semister_subjects"></div>
+    </div>
+    <div class="actions">
+      <%= f.submit "Update" %>
+    </div>
+<% end %>
+
+

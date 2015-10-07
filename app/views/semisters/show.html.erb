@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Course:</strong>
+  <%= @semister.course_id %>
+</p>
+
+<p>
+  <strong>Semister name:</strong>
+  <%= @semister.semister_name %>
+</p>
+
+<p>
+  <strong>Year:</strong>
+  <%= @semister.year %>
+</p>
+
+<%= link_to 'Edit', edit_semister_path(@semister) %> |
+<%= link_to 'Back', semisters_path %>

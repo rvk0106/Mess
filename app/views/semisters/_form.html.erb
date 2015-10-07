@@ -1,0 +1,32 @@
+<%= form_for(@semister) do |f| %>
+  <% if @semister.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@semister.errors.count, "error") %> prohibited this semister from being saved:</h2>
+
+      <ul>
+      <% @semister.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+    <div class="field">
+      <%= f.label :university %><br>
+      <%= f.select :university, University.all.pluck(:university_name,:id), {prompt: "Select University"}  %>
+    </div>
+  <div class="field">
+    <%= f.label :course_id %><br>
+    <%= f.select :course_id, "" %>
+  </div>
+  <div class="field">
+    <%= f.label :semister_name %><br>
+    <%= f.text_field :semister_name %>
+  </div>
+  <div class="field">
+    <%= f.label :year %><br>
+    <%= f.text_field :year %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
