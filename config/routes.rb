@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'admin/index'
+
   resources :user_subjects
   resources :subjects
   resources :semisters
@@ -13,11 +15,19 @@ Rails.application.routes.draw do
 
   authenticated do
     devise_scope :user do
-      root to: "welcome#index", :as => "authenticated"
-      put "/update_user_subjects/:id", to: "welcome#update_user_subjects", as: "update_user_subjects"
+      authenticated :user, ->(u) { u.has_role? :admin } do
+        root to: "admin#index", as: :admin_root
+      end
+      authenticated :user, ->(u) { u.has_role? :student   } do
+        root to: "welcome#index", as: :student_root
+        put "/update_user_subjects/:id", to: "welcome#update_user_subjects", as: "update_user_subjects"
+      end
+      authenticated :user, ->(u) { u.has_role? :faculty   } do
+        root to: "welcome#index", as: :faculty_root
+      end
+
     end
   end
-
 
 
   unauthenticated do

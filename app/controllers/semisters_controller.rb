@@ -1,6 +1,6 @@
 class SemistersController < ApplicationController
   before_action :set_semister, only: [:show, :edit, :update, :destroy]
-
+  layout "admin"
   # GET /semisters
   # GET /semisters.json
   def index

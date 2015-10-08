@@ -1,5 +1,6 @@
 class UniversitiesController < ApplicationController
   before_action :set_university, only: [:show, :edit, :update, :destroy]
+  layout "admin"
 
   # GET /universities
   # GET /universities.json

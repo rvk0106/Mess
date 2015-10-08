@@ -1,32 +1,52 @@
-<%= form_for(@semister) do |f| %>
-  <% if @semister.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@semister.errors.count, "error") %> prohibited this semister from being saved:</h2>
+<%= form_for @semister, :html => { :class => "form-horizontal semister" } do |f| %>
 
-      <ul>
-      <% @semister.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+    <% if @semister.errors.any? %>
+    <div id="error_expl" class="panel panel-danger">
+      <div class="panel-heading">
+        <h3 class="panel-title"><%= pluralize(@semister.errors.count, "error") %> prohibited this semister from being saved:</h3>
+      </div>
+      <div class="panel-body">
+        <ul>
+        <% @semister.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
     </div>
   <% end %>
-    <div class="field">
-      <%= f.label :university %><br>
-      <%= f.select :university, University.all.pluck(:university_name,:id), {prompt: "Select University"}  %>
+    <div class="control-group">
+      <%= f.label :university, :class => 'control-label' %>
+      <div class="controls">
+        <%= f.select :university, University.all.pluck(:university_name,:id), {prompt: "Select University"},{:class => 'form-control' }  %>
+      </div>
+
     </div>
-  <div class="field">
-    <%= f.label :course_id %><br>
-    <%= f.select :course_id, "" %>
+
+  <div class="control-group">
+    <%= f.label :course_id, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.select :course_id, "",{},{:class => 'form-control' } %>
+    </div>
+    <%= error_span(@semister[:course_id]) %>
   </div>
-  <div class="field">
-    <%= f.label :semister_name %><br>
-    <%= f.text_field :semister_name %>
+  <div class="control-group">
+    <%= f.label :semister_name, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :semister_name, :class => 'form-control' %>
+    </div>
+    <%= error_span(@semister[:semister_name]) %>
   </div>
-  <div class="field">
-    <%= f.label :year %><br>
-    <%= f.text_field :year %>
+  <div class="control-group">
+    <%= f.label :year, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :year, :class => 'form-control' %>
+    </div>
+    <%= error_span(@semister[:year]) %>
   </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+
+
+  <%= f.submit nil, :class => 'btn btn-primary' %>
+  <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+            semisters_path, :class => 'btn btn-default' %>
+
 <% end %>

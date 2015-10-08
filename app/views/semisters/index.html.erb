@@ -1,31 +1,40 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Listing Semisters</h1>
-
-<table>
+<%- model_class = Semister -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
+</div>
+<table class="table table-striped">
   <thead>
     <tr>
-      <th>Course</th>
-      <th>Semister name</th>
-      <th>Year</th>
-      <th colspan="3"></th>
+      <th><%= model_class.human_attribute_name(:id) %></th>
+      <th><%= model_class.human_attribute_name(:course_id) %></th>
+      <th><%= model_class.human_attribute_name(:semister_name) %></th>
+      <th><%= model_class.human_attribute_name(:year) %></th>
+      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
-
   <tbody>
     <% @semisters.each do |semister| %>
       <tr>
+        <td><%= link_to semister.id, semister_path(semister) %></td>
         <td><%= semister.course_id %></td>
         <td><%= semister.semister_name %></td>
         <td><%= semister.year %></td>
-        <td><%= link_to 'Show', semister %></td>
-        <td><%= link_to 'Edit', edit_semister_path(semister) %></td>
-        <td><%= link_to 'Destroy', semister, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%=l semister.created_at %></td>
+        <td>
+          <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                      edit_semister_path(semister), :class => 'btn btn-default btn-xs' %>
+          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                      semister_path(semister),
+                      :method => :delete,
+                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                      :class => 'btn btn-xs btn-danger' %>
+        </td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<br>
-
-<%= link_to 'New Semister', new_semister_path %>
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_semister_path,
+            :class => 'btn btn-primary' %>

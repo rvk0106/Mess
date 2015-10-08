@@ -19,7 +19,7 @@ module Mess
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
-
+    Rails.application.routes.default_url_options[:host] = 'localhost:3000'
     Rails.application.config.assets.precompile += %w( storefront.css )
     Rails.application.config.assets.precompile += %w( storefront.js scrollIt.min.js)
     Rails.application.config.assets.precompile += %w( admin.css )

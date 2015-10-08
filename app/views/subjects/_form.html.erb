@@ -1,32 +1,59 @@
-<%= form_for(@subject) do |f| %>
-  <% if @subject.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@subject.errors.count, "error") %> prohibited this subject from being saved:</h2>
+<%= form_for @subject, :html => { :class => "form-horizontal subject" } do |f| %>
 
-      <ul>
-      <% @subject.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+    <% if @subject.errors.any? %>
+    <div id="error_expl" class="panel panel-danger">
+      <div class="panel-heading">
+        <h3 class="panel-title"><%= pluralize(@subject.errors.count, "error") %> prohibited this subject from being saved:</h3>
+      </div>
+      <div class="panel-body">
+        <ul>
+        <% @subject.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
     </div>
   <% end %>
-    <div class="field">
-      <%= f.label :university %><br>
-      <%= f.select :university, University.all.pluck(:university_name,:id), {prompt: "Select University"} %>
+    <div class="control-group">
+      <%= f.label :universities, :class => 'control-label' %>
+      <div class="controls">
+        <%= f.select :university, University.all.pluck(:university_name,:id), {prompt: "Select University"}, { :class => 'form-control'} %>
+      </div>
+
     </div>
-    <div class="field">
-      <%= f.label :course %><br>
-      <%= f.select :course, "", {prompt: "Select Course"}  %>
+    <div class="control-group">
+      <%= f.label :courses, :class => 'control-label' %>
+      <div class="controls">
+        <%= f.select :course, "", {prompt: "Select Course"}, { :class => 'form-control'}  %>
+      </div>
+
     </div>
-    <div class="field">
-      <%= f.label :semister_id %><br>
-      <%= f.select :semister_id, "", {prompt: "Select Semister"} %>
+    <div class="control-group">
+      <%= f.label :courses, :class => 'control-label' %>
+      <div class="controls">
+        <%= f.select :semister_id, "", {prompt: "Select Semister"} , { :class => 'form-control'} %>
+      </div>
+
     </div>
-  <div class="field">
-    <%= f.label :subject_name %><br>
-    <%= f.text_field :subject_name %>
+
+  <div class="control-group">
+    <%= f.label :subject_name, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :subject_name, :class => 'form-control' %>
+    </div>
+    <%= error_span(@subject[:subject_name]) %>
   </div>
-  <div class="actions">
-    <%= f.submit %>
+  <div class="control-group">
+    <%= f.label :semister_id, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :semister_id, :class => 'form-control' %>
+    </div>
+    <%= error_span(@subject[:semister_id]) %>
   </div>
+
+
+  <%= f.submit nil, :class => 'btn btn-primary' %>
+  <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+            subjects_path, :class => 'btn btn-default' %>
+
 <% end %>
