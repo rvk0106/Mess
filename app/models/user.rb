@@ -9,4 +9,5 @@ class User < ActiveRecord::Base
   has_many :subjects, :through => :user_subjects
   attr_accessor :university
   attr_accessor :course
+  attr_accessor :semister
 end

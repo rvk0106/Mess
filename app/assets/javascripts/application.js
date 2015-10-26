@@ -50,7 +50,7 @@ $(function(){
         $.ajax({
             url: "/get_semister_subject_checkbox/"+$(this).val()
         }).done(function(data){
-
+           
             $(".semister_subjects").html(data);
            // $("#subject_semister_id").empty().append(data);
         });
