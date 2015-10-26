@@ -15,10 +15,4 @@
 /log/*
 !/log/.keep
 /tmp
-/config/secrets.yml
-/config/initializers/devise.rb 
-/config/environments/production.rb
-/config/database.yml
-/config/secret.yml
-/public/assets/*
-Gemfile.lock
+
