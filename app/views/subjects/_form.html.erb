@@ -29,7 +29,7 @@
 
     </div>
     <div class="control-group">
-      <%= f.label :courses, :class => 'control-label' %>
+      <%= f.label :Semister, :class => 'control-label' %>
       <div class="controls">
         <%= f.select :semister_id, "", {prompt: "Select Semister"} , { :class => 'form-control'} %>
       </div>
@@ -42,13 +42,6 @@
       <%= f.text_field :subject_name, :class => 'form-control' %>
     </div>
     <%= error_span(@subject[:subject_name]) %>
-  </div>
-  <div class="control-group">
-    <%= f.label :semister_id, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :semister_id, :class => 'form-control' %>
-    </div>
-    <%= error_span(@subject[:semister_id]) %>
   </div>
 
 

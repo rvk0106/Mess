@@ -1,5 +1,6 @@
 <%= hidden_field_tag "user[subject_ids][]", nil %>
 <% @course.semisters.each do |semister| %>
+	<% if semister.subjects.count > 0 %><b><%= semister.year %> Year- <%= semister.semister_name %> Semister</b></br><% end %>
     <% semister.subjects.each do |subject| %>
         <%= check_box_tag "user[subject_ids][]", subject.id, current_user.subjects.collect(&:ids).include?(subject.id) %>
         <%= subject.subject_name %></br>

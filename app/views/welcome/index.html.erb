@@ -1,28 +1,25 @@
-<h1>Welcome#index</h1>
-<p>Find me in app/views/welcome/index.html.erb</p>
+<div data-scroll-index="0" class="top_page2">
+  <div class="col-md-1"></div>
 
-<% if user_signed_in? %>
-    <li>
-      <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
-    </li>
-<% end %>
-
+  <div class="col-md-4 cwhite">
+    <h3 class="pbottom">Select Your Subject</h3>
 <%= form_for(current_user, :url => update_user_subjects_path(current_user.id), html: { method: :put }) do |f| %>
-    <div class="field">
-      <%= f.label :university %><br>
-      <%= f.select :university, University.all.pluck(:university_name,:id), {prompt: "Select University"} %>
+    <div class="field col-md-12">
+      <div class="col-md-3"><%= f.label :university, :style => "padding-top: 6px;" %></div>
+      <div class="col-md-6"><%= f.select :university, University.all.pluck(:university_name,:id), {prompt: "Select University"}, :class => "form-control" %></div>
+      
     </div>
-    <div class="field">
-      <%= f.label :course %><br>
-      <%= f.select :course, "", {prompt: "Select Course"}  %>
+    <div class="field col-md-12">&nbsp;</div>
+    <div class="field col-md-12">
+      <div class="col-md-3"><%= f.label :course, :style => "padding-top: 6px;" %></div>
+      <div class="col-md-6"><%= f.select :course, "", {prompt: "Select Course"},:class => "form-control"  %></br></br></div>
     </div>
-    <div class="field">
-      <%= f.label :select_category %><br>
-      <div class="semister_subjects"></div>
-    </div>
+
+    <div class="semister_subjects"></div>
     <div class="actions">
-      <%= f.submit "Update" %>
+      </br></br>
+      <%= f.submit "Update", :class => "btn btn-primary btn-lg center-block" %>
     </div>
 <% end %>
 
-
+</div>

@@ -1,6 +1,2 @@
-// Admin
-// Bootswatch
-//= require jquery
-//= require jquery_ujs
-//= require admin/loader
-//= require admin/bootswatch
+//= require bootstrap.min
+//= require admin-lte
