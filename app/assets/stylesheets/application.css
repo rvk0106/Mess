@@ -10,6 +10,7 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
+ *= require bootstrap_and_overrides
  *= require bootstrapValidator.min
  */
 
@@ -33,10 +34,8 @@
     padding-bottom: 15px;
     display: none;
 }
-.page_two{
-    margin-top: 2%;
-    height: 250px;
-    background-color: rgb(252, 211, 7)
+.page{
+
 }
 .login_button{
 padding: 0px !important;
@@ -50,5 +49,8 @@ padding: 0px !important;
 }
 .login_label{
     color: #ffffff;
+
+}
+.close-class{
 
 }
